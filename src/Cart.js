@@ -16,6 +16,12 @@ export default function Cart(){
         }, 0)
         setTotalPrice(totalPrice.toFixed(2)); //* Round to 2 decimal places
     }
+    //todo ----- Clear cart -----
+    function clearCart(){
+        document.getElementById('cardContainer').innerHTML = "";
+        setTotalPrice('0.00');
+        setCartItem(0);
+    }
 
     return(
         <>
@@ -30,7 +36,7 @@ export default function Cart(){
                 <button
                 >Add Items</button>
                 </div>
-                <div className="cardContainer">
+                <div id="cardContainer">
                     <Card 
                         updateCart={updateCart}
                     />
@@ -39,6 +45,9 @@ export default function Cart(){
                     <h2>Total Price:</h2>
                     <h3>{totalPrice}</h3>
                 </section>
+                <button
+                    onClick={clearCart}
+                >Clear Cart</button>
             </main>
         </>
     );
