@@ -6,15 +6,19 @@ export default function Card(props){
     let[cardList, setCardList] = useState([
         {
             pName: "Product-1",
-            pValue: "845.69",
+            pValue: 847.89,
             pQty: 1,
         },
         {
             pName: "Product-2",
-            pValue: "598.66",
+            pValue: 598.66,
             pQty: 1,
-        }
+        },
     ]);
+    //todo ----- random price generator -----
+    function randomPrice(){
+        // return Math.floor((Math.random() * (300 - 70 + 1)) + 70).toFixed
+    }
 
     //todo ----- decrease the item qty -----
     function deleteItem(i){
@@ -27,8 +31,6 @@ export default function Card(props){
         }
         setCardList([...updatedList]);
         props.updateCart(updatedList.length, updatedList);
-       
-
     }
     //todo ----- increase the item qty -----
     function addItem(i){

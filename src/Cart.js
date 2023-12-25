@@ -6,6 +6,18 @@ export default function Cart(){
 
     let[cartItem, setCartItem] = useState(2);
     let [totalPrice, setTotalPrice] = useState(1444.35);
+    let[cardList, setCardList] = useState([
+        {
+            pName: "Product-1",
+            pValue: 847.89,
+            pQty: 1,
+        },
+        {
+            pName: "Product-2",
+            pValue: 598.66,
+            pQty: 1,
+        }
+    ]);
     
     //todo ----- update cart count -----
     function updateCart(count, updatedCardList){
@@ -22,18 +34,35 @@ export default function Cart(){
         setTotalPrice('0.00');
         setCartItem(0);
     }
+    //todo ----- add item in the list -----
+    function addToCart(){
+        let updateCardList = []
+        let newItem = {
+            pName: `Product - ${cardList.length + 1}`,
+            pValue: 847.89,
+            pQty: 1,
+        }
+        // while(true){
+             updateCardList = [...cardList, newItem]
+        // }
+        // let updateCardList = [...cardList, newItem]
+        // updateCardList.push(newItem);
+        console.log(updateCardList);
+    }
 
     return(
         <>
 
             <nav>
-                <h1 className="title">👗 Shopping Cart</h1>
+                <h1 className="title">Shopping Cart</h1>
                 <h1 className="cartItem">🛒<span>{cartItem}</span></h1>
             </nav>
             <main>
                 <div className="addItems">
                 <h2>Your Items</h2>
                 <button
+                    className="button-cart"
+                    onClick={()=>{addToCart()}}
                 >Add Items</button>
                 </div>
                 <div id="cardContainer">
@@ -43,9 +72,10 @@ export default function Cart(){
                 </div>
                 <section className="totalPrice">
                     <h2>Total Price:</h2>
-                    <h3>{totalPrice}</h3>
+                    <h2>$ {totalPrice}</h2>
                 </section>
                 <button
+                    className="button-cart"
                     onClick={clearCart}
                 >Clear Cart</button>
             </main>
