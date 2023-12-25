@@ -39,15 +39,12 @@ export default function Cart(){
         let updateCardList = []
         let newItem = {
             pName: `Product - ${cardList.length + 1}`,
-            pValue: 847.89,
+            pValue: (Math.random() * (300 - 70) + 70).toFixed(2),
             pQty: 1,
         }
-        // while(true){
-             updateCardList = [...cardList, newItem]
-        // }
-        // let updateCardList = [...cardList, newItem]
-        // updateCardList.push(newItem);
-        console.log(updateCardList);
+        updateCardList = [...cardList, newItem]
+        setCardList(updateCardList);
+        updateCart(updateCardList.length, updateCardList)
     }
 
     return(
@@ -68,6 +65,7 @@ export default function Cart(){
                 <div id="cardContainer">
                     <Card 
                         updateCart={updateCart}
+                        cardList = {cardList}
                     />
                 </div>
                 <section className="totalPrice">
