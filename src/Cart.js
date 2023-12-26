@@ -59,7 +59,7 @@ export default function Cart(){
                 <h2>Your Items</h2>
                 <button
                     className="button-cart"
-                    onClick={()=>{addToCart()}}
+                    onClick={addToCart}
                 >Add Items</button>
                 </div>
                 <div id="cardContainer">

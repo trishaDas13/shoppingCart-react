@@ -3,46 +3,49 @@ import { useState} from 'react';
 
 export default function Card(props){
 
-    // let[cardList, setCardList] = useState(props.cardList);
+    let[cardList, setCardList] = useState(props.cardList);
 
-    // //todo ----- decrease the item qty -----
-    // function deleteItem(i){
-    //     let updatedList = [...cardList];
-    //     if(updatedList[i].pQty > 1){
-    //         updatedList[i].pQty -= 1;
-    //     }
-    //     else{
-    //         updatedList.splice(i, 1);
-    //     }
-    //     setCardList([...updatedList]);
-    //     props.updateCart(updatedList.length, updatedList);
-    // }
-    // //todo ----- increase the item qty -----
-    // function addItem(i){
-    //     let updatedList = [...cardList];
-    //     updatedList[i].pQty += 1;
-    //     setCardList([...updatedList]);
-    //     props.updateCart(updatedList.length, updatedList);
-    // }
+    //todo ----- decrease the item qty -----
+    function deleteItem(i){
+        let updatedList = [...props.cardList];
+        // if(updatedList[i].pQty > 1){
+        //     updatedList[i].pQty -= 1;
+        // }
+        // else{
+        //     updatedList.splice(i, 1);
+        // }
+        setCardList({...updatedList[i], pQty: updatedList[i].pQty-1});
+        props.updateCart(updatedList.length, updatedList);
+        
+    }
+    console.log(props.cardList);
+    //todo ----- increase the item qty -----
+    function addItem(i){
+        let updatedList = [...cardList];
+        updatedList[i].pQty += 1;
+        setCardList([...updatedList]);
+        props.updateCart(updatedList.length, updatedList);
+    }
 
-    const [count, setCount] = useState(1);
+    // const [count, setCount] = useState(1);
 
-    const deleteItem = (i) => {
-      let updatedList = [...props.cardList];
-      let updatedCount = count - 1;
-      setCount(updatedCount);
-      props.updateCart(updatedCount, updatedList);
-    };
+    // const deleteItem = (i) => {
+    //   let updatedList = [...props.cardList];
+    //   let updatedCount = count - 1;
+    //   setCount(updatedCount);
+    //   props.updateCart(updatedCount, updatedList);
+    // };
   
-    const addItem = (i) => {
-      let updatedList = [...props.cardList];
-      updatedList[i].pQty += 1;
-      setCount(count + 1);
-      props.updateCart(count + 1, updatedList);
-    };
+    // const addItem = (i) => {
+    //   let updatedList = [...props.cardList];
+    //   updatedList[i].pQty += 1;
+    //   setCount(count + 1);
+    //   props.updateCart(count + 1, updatedList);
+    // };
 
     return(
         <>       
+        {/* {console.log( props.cardList)} */}
             {
                 props.cardList.map((item, index) => {
                     return (
